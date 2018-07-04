@@ -59,7 +59,7 @@
           { text: 'Nama', value: 'name' },
           { text: 'Kerja Praktek', value: 'kp' },
           { text: 'Lab', value: 'lab' },
-          { text: 'Tech', value: 'tech', sortable: false },
+          { text: 'Skills', value: 'tech', sortable: false },
           { text: 'Pengalaman kerja', value: 'work', sortable: false },
           // { text: 'Github', value: 'github' },
           // { text: 'Instagram', value: 'instagram' },

@@ -42,7 +42,7 @@
                   :search-input.sync="search"
                   hide-selected
                   hint="Maximum of 10 tags"
-                  label="Add technology you love"
+                  label="Add technology skills"
                   multiple
                   persistent-hint
                   small-chips

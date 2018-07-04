@@ -14,23 +14,23 @@
             </div>
           </v-card-title>
           <v-card-text>
-            <v-subheader class="title">Bio</v-subheader>
+            <span class="title">Bio</span>
             <p>{{ profile.bio }}</p>
-            <v-subheader class="title">Lab</v-subheader>
+            <span class="title">Lab</span>
             <p>{{ profile.lab || "Belum ada" }}</p>
-            <v-subheader class="title">Kerja Praktek</v-subheader>
+            <span class="title">Kerja Praktek</span>
             <p>{{ profile.kp || "Belum ada" }}</p>
-            <v-subheader class="title">Pengalaman Kerja</v-subheader>
+            <span class="title">Pengalaman Kerja</span>
             <p>{{ profile.work || "Belum ada" }}</p>
-            <v-subheader class="title">Tech</v-subheader>
+            <span class="title">Skills</span>
             <div>
               <v-chip v-for="tech in profile.tech" color="primary" text-color="white" :key="tech">{{tech}}</v-chip>
             </div>
             <br />
 
-            <v-subheader class="title">Pengalaman Kerja</v-subheader>
+            <span class="title">Pengalaman Kerja</span>
             <p>{{ profile.work || "Belum ada" }}</p>
-            <v-subheader class="title">Social Media</v-subheader>
+            <span class="title">Social Media</span>
             <br />
             <a :href="'http://twitter.com/' + profile.twitter"  target="_blank">
               <v-btn fab dark small color="primary">

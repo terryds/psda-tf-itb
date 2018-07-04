@@ -33,11 +33,19 @@
       </v-alert>
 
       <v-card flat>
-        <v-snackbar v-model="snackbar" absolute top right color="success">
+        <v-snackbar v-model="snackbar" top color="success" timeout="6000">
           <span>Registration successful!</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
         <InputForm @userHasSubmitted="handleOnSubmit"/>
+
+        <br />
+        <br />
+        <v-card-actions>
+          <v-btn color="error" @click="signOut">Sign Out</v-btn>
+          <v-spacer></v-spacer> 
+          <v-btn color="error" @click.stop="removeAccountDialog = true">Delete Account</v-btn>
+        </v-card-actions>
       </v-card>
       
 <!--       <ul>
@@ -45,16 +53,38 @@
           <button @click="removeItem(item)">&times;</button>
         </li>
       </ul> -->
-      <br />
-      <v-btn color="error" @click="remove">Remove</v-btn>
-      <br />
-      <v-btn color="error" @click="signOut">Sign Out</v-btn>
     </div>
 
 
     <div  v-if="!user && !loading">
       <v-btn color="info" @click="signInWithGoogle">Sign in with Google</v-btn>
     </div>
+
+    <v-dialog v-model="removeAccountDialog" max-width="290">
+      <v-card>
+        <v-card-title class="headline">Hapus akun ini</v-card-title>
+        <v-card-text>
+          Apakah anda yakin ingin menghapus profil Anda?
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="red darken-1"
+            flat="flat"
+            @click="removeAccountDialog = false"
+          >
+            Close
+          </v-btn>
+          <v-btn dark
+            color="red darken-1"
+            @click="remove"
+          >
+            Remove
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </div>
 </template>
 
@@ -81,6 +111,7 @@
         items: [],
         item: '',
         snackbar: false,
+        removeAccountDialog: false,
       }
     },
     methods: {
@@ -96,7 +127,8 @@
         }).catch(err => console.log(error))
       },
       remove() {
-        this.$firebaseRefs.items.remove()
+        this.$firebaseRefs.items.remove();
+        this.removeAccountDialog = false;
       },
       handleOnSubmit(formInput) {
         this.$firebaseRefs.items.set({formInput}).then(() => {

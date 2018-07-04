@@ -24,8 +24,7 @@ import {
   VAvatar,
   VAlert,
   VCombobox,
-  VChip,
-  VSubheader
+  VChip
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -53,7 +52,6 @@ Vue.use(Vuetify, {
     VAvatar,
     VAlert,
     VCombobox,
-    VChip,
-    VSubheader
+    VChip
   }
 })
