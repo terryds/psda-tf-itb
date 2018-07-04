@@ -24,7 +24,7 @@
             <p>{{ profile.work || "Belum ada" }}</p>
             <v-subheader class="title">Tech</v-subheader>
             <div>
-              <v-chip v-for="tech in profile.tech" color="primary" text-color="white">{{tech}}</v-chip>
+              <v-chip v-for="tech in profile.tech" color="primary" text-color="white" :key="tech">{{tech}}</v-chip>
             </div>
             <br />
 

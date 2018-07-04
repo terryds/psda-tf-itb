@@ -16,7 +16,7 @@ import {
   VDataTable,
   VProgressCircular,
   VSnackbar,
-  VTextArea,
+  VTextarea,
   VSelect,
   VSlider,
   VCheckbox,

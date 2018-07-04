@@ -22,7 +22,7 @@
         <td class="text-xs-left">{{ props.item.name }}</td>
         <td class="text-xs-left">{{ props.item.kp || "-" }}</td>
         <td class="text-xs-left">{{ props.item.lab || "-" }}</td>
-        <td class="text-xs-left"><v-chip outline color="primary" v-for="item in props.item.tech.slice(0,5)">{{ item }}</v-chip></td>
+        <td class="text-xs-left"><v-chip outline color="primary" v-for="item in props.item.tech" :key="item">{{ item }}</v-chip></td>
 <!--         <td class="text-xs-right">{{ props.item.github }}</td>
         <td class="text-xs-right">{{ props.item.instagram }}</td>
         <td class="text-xs-right">{{ props.item.twitter }}</td> -->
