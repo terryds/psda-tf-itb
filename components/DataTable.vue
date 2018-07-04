@@ -6,7 +6,7 @@
       <v-text-field
         v-model="search"
         append-icon="search"
-        label="Search"
+        label="Cari nim, nama, lab, skill, dan lainnya"
         single-line
         hide-details
       ></v-text-field>
@@ -16,6 +16,7 @@
       :items="users"
       :search="search"
       :custom-filter="customFilter"
+      must-sort
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.item.nim }}</td>
@@ -26,6 +27,7 @@
 <!--         <td class="text-xs-right">{{ props.item.github }}</td>
         <td class="text-xs-right">{{ props.item.instagram }}</td>
         <td class="text-xs-right">{{ props.item.twitter }}</td> -->
+        <td class="text-xs-left">{{ props.item.work || "-" }}</td>
         <td class="justify-center layout px-0">
           <v-btn small color="primary" @click="openProfile(props.item)">View More</v-btn>
         </td>
@@ -57,7 +59,8 @@
           { text: 'Nama', value: 'name' },
           { text: 'Kerja Praktek', value: 'kp' },
           { text: 'Lab', value: 'lab' },
-          { text: 'Tech', value: 'tech' },
+          { text: 'Tech', value: 'tech', sortable: false },
+          { text: 'Pengalaman kerja', value: 'work', sortable: false },
           // { text: 'Github', value: 'github' },
           // { text: 'Instagram', value: 'instagram' },
           // { text: 'Twitter', value: 'twitter' },
