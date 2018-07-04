@@ -24,7 +24,8 @@ import {
   VAvatar,
   VAlert,
   VCombobox,
-  VChip
+  VChip,
+  VSubheader
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -44,7 +45,7 @@ Vue.use(Vuetify, {
     VDataTable,
     VProgressCircular,
     VSnackbar,
-    VTextArea,
+    VTextarea,
     VSelect,
     VSlider,
     VCheckbox,
@@ -52,6 +53,7 @@ Vue.use(Vuetify, {
     VAvatar,
     VAlert,
     VCombobox,
-    VChip
+    VChip,
+    VSubheader
   }
 })

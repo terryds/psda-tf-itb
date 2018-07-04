@@ -39,7 +39,12 @@
 
 <script>
   export default {
-    props: ['users'],
+    props: {
+      users: {
+        default: [],
+        type: Array
+      }
+    },
     data() {
       return {
         search: '',
@@ -58,7 +63,6 @@
           // { text: 'Twitter', value: 'twitter' },
           { text: 'Actions', value: 'name', sortable: false }
         ],
-        users: []
       }
     },
     methods: {
@@ -67,7 +71,6 @@
         if (search.trim() === '') return items;
         return items.filter(function (i) {
             return Object.keys(i).some(function (j) {
-              console.log(i[j]);
               if(Array.isArray(i[j])) {
                 i[j].some(function(k) {
                   return filter(i[j][k], search)

@@ -40,13 +40,11 @@
         <InputForm @userHasSubmitted="handleOnSubmit"/>
       </v-card>
       
-      <ul>
+<!--       <ul>
         <li v-for="item in items">{{ item }}
-          <!-- <button @click="removeItem(item)">&times;</button> -->
+          <button @click="removeItem(item)">&times;</button>
         </li>
-      </ul>
-<!--       <label for="item">Add Item</label> <br>
-      <input type="text" v-model="item" @keyup.enter="addItem"> -->
+      </ul> -->
       <br />
       <v-btn color="error" @click="remove">Remove</v-btn>
       <br />
@@ -96,16 +94,6 @@
         firebase.auth().signOut().then(() => {
           this.user = null
         }).catch(err => console.log(error))
-      },
-      addItem() {
-        this.$firebaseRefs.items.push({
-          name: this.item
-        }).then(() => {
-          this.item = ''
-        })
-      },
-      removeItem(item) {
-        this.$firebaseRefs.items.child(item['.key']).remove()
       },
       remove() {
         this.$firebaseRefs.items.remove()

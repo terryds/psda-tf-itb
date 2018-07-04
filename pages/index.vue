@@ -82,26 +82,13 @@
     methods: {
       async getAllItems() {
         const result = await this.$axios.$get('https://psda-tf-itb.firebaseio.com/items.json');
-        console.log(result)
         const arr = await Object.entries(result)
-        console.log(arr)
-        
+
         let res = [];
         arr.forEach(function(item) {
           res.push(item[1]["formInput"]);
         })
-        console.log(res)
         this.users = res;
-        
-
-        // let res = [];
-        // for(var key in result) {
-        //   console.log(key)
-        //   for(var formInput in key) {
-        //     res.push(formInput)
-        //   }
-        // }
-        // console.log(res)
       },
       handleOpenProfile(item) {
           this.dialog = !this.dialog;
@@ -109,7 +96,6 @@
       }
     },
     created() {
-      console.log("Created");
       this.getAllItems();
     }
   }
