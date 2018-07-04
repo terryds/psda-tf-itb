@@ -2,7 +2,7 @@ const nodeExternals = require('webpack-node-externals')
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
 
   /*
   ** Headers of the page
@@ -16,7 +16,9 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.1.0/css/brands.css' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css' }
     ]
   },
 
@@ -24,6 +26,12 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#3B8070' },
+
+  loadingIndicator: {
+    name: 'rectangle-bounce',
+    color: '#fff',
+    background: '#1abc9c'
+  },
 
   /*
   ** Global CSS
@@ -39,8 +47,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-   '~plugins/vuetify.js',
-   '~plugins/vuefire.js'
+   '~plugins/vuetifyinit.js',
+   '~plugins/firebaseinit.js'
   ],
 
   /*
@@ -72,7 +80,7 @@ module.exports = {
       ]
     },
     vendor: [
-      '~/plugins/vuetify.js'
+      '~/plugins/vuetifyinit.js'
     ],
     extractCSS: true,
     /*

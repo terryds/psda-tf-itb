@@ -13,7 +13,18 @@ import {
   VForm,
   VTextField,
   VToolTip,
-  VDataTable
+  VDataTable,
+  VProgressCircular,
+  VSnackbar,
+  VTextArea,
+  VSelect,
+  VSlider,
+  VCheckbox,
+  VDialog,
+  VAvatar,
+  VAlert,
+  VCombobox,
+  VChip
 } from 'vuetify'
 
 Vue.use(Vuetify, {
@@ -30,6 +41,17 @@ Vue.use(Vuetify, {
     VForm,
     VTextField,
     VToolTip,
-    VDataTable
+    VDataTable,
+    VProgressCircular,
+    VSnackbar,
+    VTextArea,
+    VSelect,
+    VSlider,
+    VCheckbox,
+    VDialog,
+    VAvatar,
+    VAlert,
+    VCombobox,
+    VChip
   }
 })
