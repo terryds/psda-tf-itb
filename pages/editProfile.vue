@@ -33,8 +33,8 @@
       </v-alert>
 
       <v-card flat>
-        <v-snackbar v-model="snackbar" top color="success" timeout=6000>
-          <span>Data saved!</span>
+        <v-snackbar multi-line v-model="snackbar" top color="success" :timeout=timeout>
+          <span>Data saved! <br /> Redirecting to homepage...</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
         <InputForm @userHasSubmitted="handleOnSubmit"/>
@@ -112,6 +112,7 @@
         item: '',
         snackbar: false,
         removeAccountDialog: false,
+        timeout: 6000
       }
     },
     methods: {
@@ -132,7 +133,19 @@
       },
       handleOnSubmit(formInput) {
         this.$firebaseRefs.items.set({formInput}).then(() => {
-          this.snackbar = true
+          
+          return new Promise((resolve) => {
+            // Wait 1 second between each route
+            this.snackbar = true;
+            setTimeout(resolve, 1000);
+          })
+        }).then(() => {
+          return new Promise((resolve) => {
+            // Wait 1 second between each route
+            this.$router.push('/');
+            setTimeout(resolve, 9000);
+          })
+          
         })
       }
     },
