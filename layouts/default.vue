@@ -49,7 +49,7 @@
             white--text
             xs12
           >
-            &copy;2018 — Made by <a href="http://terryds.github.io" target="_blank" class="copyright"><strong>Terry Djony</strong></a>
+            &copy;2018 — Made by <a href="http://terryds.github.io" target="_blank" class="copyright"><strong>Terry Djony</strong></a> for <a href="http://hmft.tf.itb.ac.id/" target="_blank">HMFT ITB</a>
           </v-flex>
         </v-layout>
       </v-footer>
@@ -67,7 +67,7 @@
           { icon: 'bubble_chart', title: 'Login / Edit', to: '/editProfile' }
         ],
         miniVariant: false,
-        title: 'PSDA TF ITB'
+        title: 'Rekam Jejak Skullers'
         // links: [
         //   'Home',
         //   'About Us',
