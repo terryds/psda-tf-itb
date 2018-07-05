@@ -33,7 +33,7 @@
       </v-alert>
 
       <v-card flat>
-        <v-snackbar v-model="snackbar" top color="success" timeout="6000">
+        <v-snackbar v-model="snackbar" top color="success" timeout=6000>
           <span>Registration successful!</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
@@ -119,12 +119,12 @@
         const GoogleProvider = new firebase.auth.GoogleAuthProvider()
         firebase.auth().signInWithRedirect(GoogleProvider).then((result) => {
           this.user = result.user
-        }).catch(err => console.log(error))
+        }).catch(err => console.log(err))
       },
       signOut() {
         firebase.auth().signOut().then(() => {
           this.user = null
-        }).catch(err => console.log(error))
+        }).catch(err => console.log(err))
       },
       remove() {
         this.$firebaseRefs.items.remove();
