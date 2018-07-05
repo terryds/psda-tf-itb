@@ -135,13 +135,11 @@
         this.$firebaseRefs.items.set({formInput}).then(() => {
           
           return new Promise((resolve) => {
-            // Wait 1 second between each route
             this.snackbar = true;
             setTimeout(resolve, 1000);
           })
         }).then(() => {
           return new Promise((resolve) => {
-            // Wait 1 second between each route
             this.$router.push('/');
             setTimeout(resolve, 9000);
           })
