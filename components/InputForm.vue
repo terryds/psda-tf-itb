@@ -23,7 +23,7 @@
               v-model="form.lab"
               :items="labs"
               color="primary"
-              label="Lab / Kelompok Keahlian (bila sudah ambil)"
+              label="Lab / Kelompok Keahlian (pilih 'Belum ambil' bila tidak ada)"
               required
             ></v-select>
           </v-flex>
@@ -204,7 +204,7 @@
           name: [val => (val || '').length > 0 || 'This field is required'],
           nim: [val => (typeof val == "string") && val.substr(0,3) == "133" && val.length == 8 || 'Maaf, hanya untuk mahasiswa Teknik Fisika ITB']
         },
-        labs: ['CMD', 'Medis', 'ICA', 'CITA', 'MSIK', 'Fisbang', '-'],
+        labs: ['CMD', 'Medis', 'ICA', 'CITA', 'MSIK', 'Fisbang', {text: 'Belum ambil', value: ''}],
         content: `Dengan menyetujui ini, Anda menyetujui bahwa data masukan adalah valid dan benar adanya.`,
         terms: false,
         defaultForm,
