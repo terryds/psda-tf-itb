@@ -204,7 +204,7 @@
           name: [val => (val || '').length > 0 || 'This field is required'],
           nim: [val => (typeof val == "string") && val.substr(0,3) == "133" && val.length == 8 || 'Maaf, hanya untuk mahasiswa Teknik Fisika ITB']
         },
-        labs: ['CMD', 'Medis', 'ICA', 'CITA', 'MSIK', 'Fisbang'],
+        labs: ['CMD', 'Medis', 'ICA', 'CITA', 'MSIK', 'Fisbang', '-'],
         content: `Dengan menyetujui ini, Anda menyetujui bahwa data masukan adalah valid dan benar adanya.`,
         terms: false,
         defaultForm,
