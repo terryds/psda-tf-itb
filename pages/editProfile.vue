@@ -34,7 +34,7 @@
 
       <v-card flat>
         <v-snackbar v-model="snackbar" top color="success" timeout=6000>
-          <span>Registration successful!</span>
+          <span>Data saved!</span>
           <v-icon dark>check_circle</v-icon>
         </v-snackbar>
         <InputForm @userHasSubmitted="handleOnSubmit"/>
