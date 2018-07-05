@@ -16,6 +16,7 @@
       :items="users"
       :search="search"
       :custom-filter="customFilter"
+      :rows-per-page-items="[10, 20, 50, {'text':'$vuetify.dataIterator.rowsPerPageAll','value':-1}]"
       must-sort
     >
       <template slot="items" slot-scope="props">
