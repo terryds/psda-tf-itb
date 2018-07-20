@@ -15,7 +15,7 @@
           </v-card-title>
           <v-card-text>
             <span class="title">Bio</span>
-            <p>{{ profile.bio }}</p>
+            <p>{{ profile.bio || "Belum ada" }}</p>
             <span class="title">Lab</span>
             <p>{{ profile.lab || "Belum ada" }}</p>
             <span class="title">Kerja Praktek</span>
@@ -30,8 +30,13 @@
 
             <span class="title">Pengalaman Kerja</span>
             <p>{{ profile.work || "Belum ada" }}</p>
+
+            <span class="title" v-if="profile.privateData">Mobile</span>
+            <p v-if="profile.privateData">{{ profile.privateData.mobile || "Tidak ada" }}</p>
+            
             <span class="title">Social Media</span>
             <br />
+
             <a :href="'http://twitter.com/' + profile.twitter"  target="_blank">
               <v-btn fab dark small color="primary">
                 <v-icon dark>fab fa-twitter</v-icon>
@@ -68,7 +73,8 @@
 </template>
 
 <script>
-  import DataTable from '@/components/DataTable'
+  import DataTable from '@/components/DataTable';
+  import firebase from 'firebase';
 
   export default {
     components: {DataTable},
@@ -76,8 +82,17 @@
       return {
         users: [],
         profile: {},
-        dialog: false
+        dialog: false,
+        loggedIn: false
       }
+    },
+    beforeCreate() {
+      const db = firebase.database();
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.loggedIn = true
+        }
+      })
     },
     methods: {
       async getAllItems() {
@@ -85,14 +100,25 @@
         const arr = await Object.entries(result)
 
         let res = [];
-        arr.forEach(function(item) {
-          res.push(item[1]["formInput"]);
+
+        arr.forEach(function(item, index) {
+          res.push({ ...item[1]["formInput"], "uid": item[0]});
         })
         this.users = res;
       },
-      handleOpenProfile(item) {
+      async handleOpenProfile(item) {
           this.dialog = !this.dialog;
-          this.profile = item;
+          if(this.loggedIn) {
+            const db = firebase.database();
+            const eventref = db.ref('/privateItems/'+item.uid)
+            const snapshot = await eventref.once('value');
+            const privateData = snapshot.val();
+            this.profile = {...item, privateData };
+          }
+          else {
+            this.profile = item;
+          }
+          
       }
     },
     created() {

@@ -100,6 +100,7 @@
         if (user) {
           this.user = user
           this.$bindAsArray('items', db.ref(`items/${user.uid}`))
+          this.$bindAsArray('privateItems', db.ref(`privateItems/${user.uid}`))
         }
         this.loading = false
       })
@@ -118,12 +119,13 @@
     methods: {
       signInWithGoogle() {
         const GoogleProvider = new firebase.auth.GoogleAuthProvider()
-        firebase.auth().signInWithRedirect(GoogleProvider).then((result) => {
+        firebase.auth().signInWithPopup(GoogleProvider).then((result) => {
           this.user = result.user
         }).catch(err => console.log(err))
       },
       signOut() {
         firebase.auth().signOut().then(() => {
+          localStorage.removeItem('accessToken');
           this.user = null
         }).catch(err => console.log(err))
       },
@@ -132,19 +134,23 @@
         this.removeAccountDialog = false;
       },
       handleOnSubmit(formInput) {
-        this.$firebaseRefs.items.set({formInput}).then(() => {
-          
+        this.$firebaseRefs.privateItems.set({mobile: formInput['mobile']}).then(() => {
+          delete formInput['mobile'];
+          this.$firebaseRefs.items.set({formInput})
+        })
+        .then(() => {
           return new Promise((resolve) => {
             this.snackbar = true;
             setTimeout(resolve, 1000);
           })
-        }).then(() => {
+        })
+        .then(() => {
           return new Promise((resolve) => {
             this.$router.push('/');
             setTimeout(resolve, 9000);
           })
-          
         })
+
       }
     },
     components: {

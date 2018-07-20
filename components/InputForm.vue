@@ -103,6 +103,17 @@
             ></v-text-field>
           </v-flex>
 
+          <v-flex xs12 sm6>
+            <v-text-field
+              v-model="form.mobile"
+              color="blue darken-2"
+              label="Mobile Phone (opsional)"
+              prepend-icon="fas fa-phonr"
+              hint="Masukkan nomor handphone"
+              required
+            ></v-text-field>
+          </v-flex>
+
 
 
           <v-flex xs12>
@@ -196,6 +207,7 @@
         linkedin: '',
         github: '',
         work: '',
+        mobile: '',
         terms: false
       })
 
