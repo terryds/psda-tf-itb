@@ -134,8 +134,9 @@
         this.removeAccountDialog = false;
       },
       handleOnSubmit(formInput) {
-        this.$firebaseRefs.privateItems.set({mobile: formInput['mobile']}).then(() => {
+        this.$firebaseRefs.privateItems.set({mobile: formInput['mobile'],email: formInput['email']}).then(() => {
           delete formInput['mobile'];
+          delete formInput['email'];
           this.$firebaseRefs.items.set({formInput})
         })
         .then(() => {
