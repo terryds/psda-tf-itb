@@ -31,8 +31,11 @@
             <span class="title">Pengalaman Kerja</span>
             <p>{{ profile.work || "Belum ada" }}</p>
 
-            <span class="title" v-if="profile.privateData">Mobile</span>
-            <p v-if="profile.privateData">{{ profile.privateData.mobile || "Tidak ada" }}</p>
+            <span class="title" v-if="profile.email">Email</span>
+            <p v-if="profile.email">{{ profile.email || "Tidak ada" }}</p>
+
+            <span class="title" v-if="profile.mobile">Mobile</span>
+            <p v-if="profile.mobile">{{ profile.mobile || "Tidak ada" }}</p>
             
             <span class="title">Social Media</span>
             <br />
@@ -113,7 +116,7 @@
             const eventref = db.ref('/privateItems/'+item.uid)
             const snapshot = await eventref.once('value');
             const privateData = snapshot.val();
-            this.profile = {...item, privateData };
+            this.profile = {...item, ...privateData };
           }
           else {
             this.profile = item;

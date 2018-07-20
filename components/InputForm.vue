@@ -108,8 +108,18 @@
               v-model="form.mobile"
               color="blue darken-2"
               label="Mobile Phone (opsional)"
-              prepend-icon="fas fa-phonr"
-              hint="Masukkan nomor handphone"
+              prepend-icon="fab fa-whatsapp"
+              hint="Masukkan nomor handphone/whatsapp"
+              required
+            ></v-text-field>
+          </v-flex>
+
+          <v-flex xs12 sm6>
+            <v-text-field
+              v-model="form.email"
+              color="blue darken-2"
+              label="Email (opsional)"
+              hint="Masukkan email"
               required
             ></v-text-field>
           </v-flex>
@@ -195,6 +205,14 @@
         }
       })
     },
+    created() {
+      const db = firebase.database();
+      const eventref = db.ref('/privateItems/'+firebase.auth().currentUser.uid)
+      eventref.once('value').then((snapshot) => {
+        const privateData = snapshot.val();
+        this.form = {...this.form, ...privateData}
+      });
+    },
     data () {
       const defaultForm = Object.freeze({
         nim: '',
@@ -208,7 +226,8 @@
         github: '',
         work: '',
         mobile: '',
-        terms: false
+        email: '',
+        terms: false,
       })
 
       return {
